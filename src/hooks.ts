@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, CSSProperties} from 'react'
 
 const scGap : number = 0.02 
 const delay : number = 20 
@@ -57,9 +57,9 @@ export const useStyle = (w : number, h : number, scale : number) => {
     const barW : number = Math.min(w, h) / 12
     const barH : number = Math.min(w, h) / 5 
     return {
-        parentStyle() {
-            const left : string = `${w / 2}px`
-            const top : string = `${h / 2}px`
+        parentStyle() : CSSProperties {
+            const left : string = `${x}px`
+            const top : string = `${y}px`
             const transform = `rotate(${180 * scale}deg)`
             return {
                 position, 
@@ -68,7 +68,7 @@ export const useStyle = (w : number, h : number, scale : number) => {
                 transform 
             }
         },
-        barStyle() {
+        barStyle() : CSSProperties {
             const left = `${-barW / 2}px`
             const top = `${-barH}px`
             const width = `${barW}px`
