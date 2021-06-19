@@ -12,12 +12,17 @@ export const useAnimatedScale = () => {
         start() {
             if (!animated) {
                 setAnimated(true)
+                console.log("DIR, SCALE", dir, scale)
                 const interval = setInterval(() => {
                     setScale((prev : number) => {
                         if (prev > 1 || prev < 0) {
                             setAnimated(false)
                             clearInterval(interval)
-                            setDir(prevDir => prevDir * -1)
+                            if (prev > 1) {
+                                setDir(-1)
+                            } else {
+                                setDir(1)
+                            }
                             if (prev > 1) {
                                 return 1
                             }

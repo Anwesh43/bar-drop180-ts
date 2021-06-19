@@ -12,7 +12,7 @@ const BarDrop : React.FC<BarDropProps> = (props : BarDropProps) => {
     const {parentStyle, barStyle} = useStyle(props.w, props.h, props.scale)
     return (
         <div style = {parentStyle()}>
-            <div style = {barStyle()}></div>
+            <div style = {barStyle()} onClick = {() => props.onClick()}></div>
         </div>
     )
 }
