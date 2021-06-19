@@ -40,11 +40,47 @@ export const useDimension = () => {
             setH(window.innerHeight)
         }
         return window.onresize = () => {
-            
+
         }
     })
     return {
         w, 
         h
+    }
+}
+
+export const useStyle = (w : number, h : number, scale : number) => {
+    const position = 'absolute'
+    const x : number = w / 2 
+    const y : number = h / 2 
+    const background = 'indigo'
+    const barW : number = Math.min(w, h) / 12
+    const barH : number = Math.min(w, h) / 5 
+    return {
+        parentStyle() {
+            const left : string = `${w / 2}px`
+            const top : string = `${h / 2}px`
+            const transform = `rotate(${180 * scale}deg)`
+            return {
+                position, 
+                left, 
+                top,
+                transform 
+            }
+        },
+        barStyle() {
+            const left = `${-barW / 2}px`
+            const top = `${-barH}px`
+            const width = `${barW}px`
+            const height = `${barH}px`
+            return {
+                left, 
+                top, 
+                position, 
+                width, 
+                height,
+                background 
+            }
+        }
     }
 }
